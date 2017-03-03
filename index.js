@@ -7,11 +7,14 @@ const Commander = require('commander');
 const FileHound = require('filehound');
 const FileSystem = require('fs');
 const Linter = require('liquid-linter');
+const Readline = require('readline');
 const Util = require('util');
 
 const EXIT_ERROR_NO_PATH_GIVEN = 65;
 const EXIT_ERROR_NOT_EXISTS = 66;
 const EXIT_ERROR_LINTER = 67;
+
+var g_aInput = [];
 
 function showFinalMessage(p_iErrorCount, p_iWarningCount) {
     var sErrorCount, sWarningCount;
@@ -34,8 +37,6 @@ function showFinalMessage(p_iErrorCount, p_iWarningCount) {
  * @NOTE: This function is only called by Commander if at least one argument is present
  *
  * @param p_aPaths Array
- *
- * @returns {*}
  */
 function action (p_aPaths) {
     var iErrorCount = 0, iWarningCount = 0;
@@ -67,7 +68,7 @@ function action (p_aPaths) {
             } else {
                 oFileHound = FileHound.create()
                     .paths(p_sPath)
-                    .ext(['md', 'html', 'lqd', 'liquid'])
+                    .ext(['htm', 'html', 'liquid', 'lqd', 'markdown', 'md'])
                     .ignoreHiddenDirectories()
                     .ignoreHiddenFiles()
                 ;
@@ -113,6 +114,27 @@ function action (p_aPaths) {
     // showFinalMessage(iErrorCount, iWarningCount);
 }
 
+/**
+ * Parses the command-line arguments from STDIN/pipe or argument vector (argv)
+ */
+function parseArguments() {
+    var aFileList;
+
+    if (g_aInput.length > 0) {
+        aFileList = g_aInput;
+    } else {
+        aFileList = process.argv;
+    }
+
+    Commander.parse(aFileList);
+    if (g_aInput.length === 0 && (Commander.args && Commander.args.length === 0)) {
+        process.exitCode = EXIT_ERROR_NO_PATH_GIVEN;
+        console.error(Chalk.red('Error: ') + Chalk.bold(' no path given'));
+        Commander.outputHelp();
+    }
+}
+
+/* @NOTE: There's a problem in the linter with {% include %} tags. For now related errors are simply ignored. */
 process.on('unhandledRejection', function(error/*, promise*/) {
     if (error.name !== 'Liquid.FileSystemError' && error.message === 'This file system doesn\'t allow includes') {
         throw error;
@@ -125,14 +147,34 @@ Commander
     .arguments('<paths...>')
     // @TODO: Figure out how to accept multiple ignore paths
     // .option('-x, --exclude <ignore-path...>', 'Paths to ignore')
-    .action(action)
-    .parse(process.argv)
+    .action(function(p_sInput) {
+        if(g_aInput.length > 0) {
+            p_sInput = g_aInput;
+        }
+
+        action(p_sInput)
+    })
 ;
 
-if (Commander.args.length === 0) {
-    process.exitCode = EXIT_ERROR_NO_PATH_GIVEN;
-    console.error(Chalk.red('Error: ') + Chalk.bold(' no path given'));
-    Commander.outputHelp();
+if(process.stdin.isTTY) {
+    parseArguments();
+} else {
+
+    var readlineInterface = Readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: false
+    });
+
+    readlineInterface.on('line', function(p_sLine){
+        if (p_sLine !== null) {
+            g_aInput.push(p_sLine);
+        }
+    });
+
+    readlineInterface.on('close', function(){
+        parseArguments();
+    });
 }
 
 /*EOF*/
