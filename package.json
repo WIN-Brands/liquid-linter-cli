@@ -1,6 +1,6 @@
 {
   "name": "liquid-linter-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Command-line wrapper for the liquid template language linter.",
   "homepage": "https://github.com/DealerDirect/liquid-linter-cli",
   "license": "MIT",
