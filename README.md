@@ -13,24 +13,82 @@
 > _“Great things are done by a series of small things brought together.”_
 > ~ Vincent Van Gogh
 
-This package is a wrapper for the NodeJs [liquid-linter](https://www.npmjs.com/package/liquid-linter)
-package, allowing it to be run from the command-line interface (CLI).
+This package is a wrapper for the NodeJs [liquid-linter][liquid-linter] package, 
+allowing it to be run from the command-line interface (CLI).
 
 ## Installation
 
-Install this package with [NPM](https://www.npmjs.com/) using 
-`npm install liquid-linter-cli --save`  (optionally adding `--global` for a 
-system-wide install) or with [Yarn](https://yarnpkg.com/) using 
-`yarn add liquid-linter-cli` (or `yarn global add liquid-linter-cli` for a 
+Install this package with [NPM][NPM] using `npm install liquid-linter-cli --save`
+(optionally adding `--global` for a system-wide install) or with [Yarn][Yarn] 
+using `yarn add liquid-linter-cli` (or `yarn global add liquid-linter-cli` for a 
 system-wide install). 
 
 ## Usage
 
-Simply run: 
+The lint command can be called with one or more paths of files or folders that 
+need to be linted. The command has support for [pipelines][pipelines]. when 
+given a directory, it is scanned for the following file extensions:
+
+- `.htm`
+- `.html`
+- `.liquid`
+- `.lqd`
+- `.markdown`
+- `.md`
+
+Currently the linter does not have a way to _exclude_ files or folders. An example
+of how to achieve this is given in the "Pipes" section.
+
+### Simple usage
+
+The most simple use is simply: 
 
 ```bash
-liquid-linter /path/to/directory/to/lint
+liquid-linter /path/to/directory/or/file/to/lint
 ```
+
+### Multiple sources
+
+The lint command has support for multiple paths. This can be a mix of files and folders:
+ 
+```bash
+liquid-linter /path/to/directory/one /path/to/file /path/to/directory/two
+```
+
+### Piping
+
+In order to _exclude_ files and folder, the user has to create a list themselves
+which does not contain the files and/or folders that should be excluded.
+
+One way to achieve this is by using a combination of [find] and [xarg]
+
+The following example shows how to lint all files and folders in the current 
+directory except the `node_modules` and `_site` folders, and only for files with 
+the `.lqd` extension (commonly used for [includes][includes])
+
+```bash
+find . -type f -name "*.lqd" -not -path './node_modules/*' -not -path './_site/*' -print0 | xargs -0 -n1 ./node_modules/.bin/liquid-linter
+```
+
+### Output
+
+The output of the linter displays a list of files and the result of the linting
+of that file. Files with no issues are colored green, files with issues are 
+colored red.
+
+For files with issues, the line and column(s) at which the error occurred are
+show.
+
+**Example**
+
+<pre>
+<span style="color:green;">./path/to/good.lqd</span>: no issues found
+<span style="color:red">./path/to/bad.lqd</span>
+  23:13-23:15  <span style="color:red;">error </span> Tag '{%' was not properly terminated
+</pre>
+
+The output is taken _directly_ from [liquid-linter]. Any weird output or incorrect 
+linting should be reported at the [liquid-lint repository].
 
 ## Contributing
 
@@ -107,3 +165,10 @@ Did not find a matching vacancy? Just [get in touch][get-in-touch]!
 
 [Cassie McKown]: https://thenounproject.com/mckowncr/
 [the Noun Project]: https://thenounproject.com/
+
+[includes]: https://help.shopify.com/themes/liquid/tags/theme-tags#include
+[liquid-linter]: https://www.npmjs.com/package/liquid-linter
+[NPM]: https://www.npmjs.com/
+[pipelines]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
+[Yarn]: https://yarnpkg.com/
+[liquid-lint repository]: https://github.com/tomheller/liquid-linter/issues
