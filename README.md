@@ -154,7 +154,7 @@ Did not find a matching vacancy? Just [get in touch][get-in-touch]!
 [versioneye]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790
 
 [version-shield]: https://img.shields.io/npm/v/liquid-linter-cli.svg
-[version]: https://packagist.org/packages/dealerdirect/liquid-linter-cli
+[version]: https://www.npmjs.com/package/liquid-linter-cli
 
 [contribution-guidelines]: CONTRIBUTING.md
 [potherca]: https://pother.ca/
