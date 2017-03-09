@@ -95,7 +95,7 @@ linting should be reported at the [liquid-lint repository].
 This is an active open-source project. We are always open to people who want to
 use the code or contribute to it.
 
-We've set up a separate document for our [contribution guidelines][contributing-guidelines].
+We've set up a separate document for our [contribution guidelines][contribution-guidelines].
 
 Thank you for being involved! :heart_eyes:
 
