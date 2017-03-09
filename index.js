@@ -14,6 +14,7 @@ const EXIT_ERROR_NO_PATH_GIVEN = 65;
 const EXIT_ERROR_NOT_EXISTS = 66;
 const EXIT_ERROR_LINTER = 67;
 
+var g_aFileExtensions = ['md', 'html', 'lqd', 'liquid'];
 var g_aInput = [];
 
 function showFinalMessage(p_iErrorCount, p_iWarningCount) {
@@ -43,19 +44,21 @@ function action (p_aPaths) {
 
     p_aPaths.forEach(function (p_sPath) {
 
-        var oStat, aFiles, oFileHound;
+        var aFiles, oFileHound, oStat, sMessage;
+
         if (FileSystem.existsSync(p_sPath) === false) {
 
             process.exitCode = EXIT_ERROR_NOT_EXISTS;
 
-            console.error(Chalk.red.underline(p_sPath));
-            var sMessage = Util.format(
+            sMessage = Util.format(
                 '  %d:%d  %s  %s',
                 0,
                 0,
                 Chalk.red('error'),
                 'No such file or directory'
             );
+
+            console.error(Chalk.red.underline(p_sPath));
             console.error(sMessage);
             console.log('');
 
@@ -68,7 +71,7 @@ function action (p_aPaths) {
             } else {
                 oFileHound = FileHound.create()
                     .paths(p_sPath)
-                    .ext(['htm', 'html', 'liquid', 'lqd', 'markdown', 'md'])
+                    .ext(g_aFileExtensions)
                     .ignoreHiddenDirectories()
                     .ignoreHiddenFiles()
                 ;
@@ -77,35 +80,55 @@ function action (p_aPaths) {
             }
 
             aFiles.forEach(function (p_sFile) {
+                var sMessage;
+                const sExtension = p_sFile.split('.').pop();
 
-                Linter.lintFile(p_sFile, function (p_aErrors) {
-                    // @FIXME: Use warnings if not errors
-                    // console.error(Chalk.yellow.underline(p_sPath));
-                    // console.error(' ' + Chalk.yellow('warning') + sMessage);
+                /* @FIXME: Individual hidden files could be given, these still need to be filtered. 2017/03/09/BMP */
 
-                    if (p_aErrors.length > 0) {
-                        process.exitCode = EXIT_ERROR_LINTER;
+                /* @NOTE: Individual files could be given that do not adhere to the extensions list */
+                if (g_aFileExtensions.indexOf(sExtension) === -1) {
+                    sMessage = Util.format('(file extension "%s" does not match one of "%s")',
+                        sExtension,
+                        g_aFileExtensions.join(', ')
+                    );
 
-                        console.error(Chalk.red.underline(p_sFile));
-                        //@TODO: add nice padding to give different lines the same format -> ' '.repeat(4 - (p_oError.location.line + '' +p_oError.location.col).length);
-                        p_aErrors.reverse().forEach(function (p_oError) {
-                            var sMessage = Util.format(
-                                '  %d:%d-%d:%d  %s  %s',
-                                p_oError.location.line,
-                                p_oError.location.col,
-                                p_oError.location.line,
-                                p_oError.location.col + p_oError.location.lenght,
-                                Chalk.red('error'),
-                                p_oError.message.split('\n')[0]
-                            );
-                            console.error(sMessage);
-                            iErrorCount++;
-                        });
-                        console.log('');
-                    } else {
-                        console.info(Chalk.green(p_sFile) + ': no issues found');
-                    }
-                });
+                    sMessage = Util.format(
+                        '%s: not scanning %s',
+                        Chalk.green(p_sFile),
+                        Chalk.dim(sMessage)
+                    );
+
+                    console.info(sMessage);
+                } else {
+                    Linter.lintFile(p_sFile, function (p_aErrors) {
+                        // @FIXME: Use warnings if not errors
+                        // console.error(Chalk.yellow.underline(p_sPath));
+                        // console.error(' ' + Chalk.yellow('warning') + sMessage);
+
+                        if (p_aErrors.length > 0) {
+                            process.exitCode = EXIT_ERROR_LINTER;
+
+                            console.error(Chalk.red.underline(p_sFile));
+                            //@TODO: add nice padding to give different lines the same format -> ' '.repeat(4 - (p_oError.location.line + '' +p_oError.location.col).length);
+                            p_aErrors.reverse().forEach(function (p_oError) {
+                                var sMessage = Util.format(
+                                    '  %d:%d-%d:%d  %s  %s',
+                                    p_oError.location.line,
+                                    p_oError.location.col,
+                                    p_oError.location.line,
+                                    p_oError.location.col + p_oError.location.lenght,
+                                    Chalk.red('error'),
+                                    p_oError.message.split('\n')[0]
+                                );
+                                console.error(sMessage);
+                                iErrorCount++;
+                            });
+                            console.log('');
+                        } else {
+                            console.info(Chalk.green(p_sFile) + ': no issues found');
+                        }
+                    });
+                }
             });
         }
     });
