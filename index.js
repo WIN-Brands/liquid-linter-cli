@@ -17,6 +17,11 @@ const EXIT_ERROR_LINTER = 67;
 var g_aFileExtensions = ['md', 'html', 'lqd', 'liquid'];
 var g_aInput = [];
 
+function addValueToCollection(p_sValue, p_aCollection) {
+    p_aCollection.push(p_sValue);
+    return p_aCollection;
+}
+
 function showFinalMessage(p_iErrorCount, p_iWarningCount) {
     var sErrorCount, sWarningCount;
 
@@ -41,6 +46,11 @@ function showFinalMessage(p_iErrorCount, p_iWarningCount) {
  */
 function action (p_aPaths) {
     var iErrorCount = 0, iWarningCount = 0;
+
+    Linter.loadTags({
+        blocks: Commander.customBlock,
+        tags: Commander.customTag
+    });
 
     p_aPaths.forEach(function (p_sPath) {
 
@@ -170,6 +180,8 @@ Commander
     .arguments('<paths...>')
     // @TODO: Figure out how to accept multiple ignore paths
     // .option('-x, --exclude <ignore-path...>', 'Paths to ignore')
+    .option('-b, --custom-block <custom-block>', 'custom blocks to ignore (can be used multiple times)', addValueToCollection, [])
+    .option('-t, --custom-tag   <custom-tag>', 'custom tags to ignore (can be used multiple times)', addValueToCollection, [])
     .action(function(p_sInput) {
         if(g_aInput.length > 0) {
             p_sInput = g_aInput;
