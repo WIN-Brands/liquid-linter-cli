@@ -1,0 +1,6 @@
+exclude: ["node_modules", "tests"]
+
+webrick:
+  headers:
+    X-Clacks-Overhead: "GNU Terry Pratchett"
+
