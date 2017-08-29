@@ -55,6 +55,16 @@ The lint command has support for multiple paths. This can be a mix of files and 
 liquid-linter /path/to/directory/one /path/to/file /path/to/directory/two
 ```
 
+### Custom blocks and tags
+
+Liquid has support for custom [tags][liquid-tags]. The liquid-linter makes the distinction between **tags** (tags that _do not_ require an end tag) and **blocks** (tags that _do_ require an end tag).
+
+Custom tags and blocks can be passed to the linter using the `--custom-tag` and `--custom-block` flags, respectively. Both can be added multiple times, to add more than one tag or block:
+
+```bash
+liquid-linter --custom-block section --custom-tag button --custom-tag color /path/to/directory
+```
+
 ### Piping
 
 In order to _exclude_ files and folder, the user has to create a list themselves
@@ -152,6 +162,7 @@ Did not find a matching vacancy? Just [get in touch][get-in-touch]!
 [license-shield]: https://img.shields.io/github/license/dealerdirect/liquid-linter-cli.svg
 [liquid-lint repository]: https://github.com/tomheller/liquid-linter/issues
 [liquid-linter]: https://www.npmjs.com/package/liquid-linter
+[liquid-tags]: https://help.shopify.com/themes/liquid/tags
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2017.svg
 [NPM]: https://www.npmjs.com/
 [pipelines]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
@@ -165,3 +176,5 @@ Did not find a matching vacancy? Just [get in touch][get-in-touch]!
 [versioneye]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790
 [workingatdealerdirecteu]: http://www.workingatdealerdirect.eu
 [Yarn]: https://yarnpkg.com/
+
+
