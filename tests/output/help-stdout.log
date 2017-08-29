@@ -1,0 +1,12 @@
+
+  Usage: index [options] <paths...>
+
+  Linter for Liquid template files
+
+  Options:
+
+    -h, --help                         output usage information
+    -V, --version                      output the version number
+    -b, --custom-block <custom-block>  custom blocks to ignore (can be used multiple times)
+    -t, --custom-tag   <custom-tag>    custom tags to ignore (can be used multiple times)
+

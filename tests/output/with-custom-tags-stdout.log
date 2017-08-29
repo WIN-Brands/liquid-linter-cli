@@ -1,0 +1,11 @@
+tests/fixtures/variable/variable-notopening.md: no issues found
+tests/fixtures/buttontag/buttontag-as-tag.md: no issues found
+tests/fixtures/ifstatement/ifstatement-complete.md: no issues found
+tests/fixtures/sectionblock/sectiontag-complete.md: no issues found
+tests/fixtures/sectionblock/sectiontag-parameter-bgimage-passing.md: no issues found
+tests/fixtures/sectionblock/sectiontag-parameter-bgimage.md: no issues found
+
+
+
+
+
