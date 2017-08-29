@@ -60,7 +60,7 @@ liquid-linter /path/to/directory/one /path/to/file /path/to/directory/two
 In order to _exclude_ files and folder, the user has to create a list themselves
 which does not contain the files and/or folders that should be excluded.
 
-One way to achieve this is by using a combination of [find] and [xarg]
+One way to achieve this is by using a combination of [`find`][gnu-find] and [`xargs`][gnu-xargs].
 
 The following example shows how to lint all files and folders in the current 
 directory except the `node_modules` and `_site` folders, and only for files with 
@@ -145,30 +145,27 @@ Did not find a matching vacancy? Just [get in touch][get-in-touch]!
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 > THE SOFTWARE.
 
-[project-stage-shield]: https://img.shields.io/badge/Project%20Stage-Development-yellowgreen.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2017.svg
 [awesome-shield]: https://img.shields.io/badge/awesome%3F-yes-brightgreen.svg
-[license-shield]: https://img.shields.io/github/license/dealerdirect/liquid-linter-cli.svg
-
-[versioneye-shield]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790/badge.svg
-[versioneye]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790
-
-[version-shield]: https://img.shields.io/npm/v/liquid-linter-cli.svg
-[version]: https://www.npmjs.com/package/liquid-linter-cli
-
-[contribution-guidelines]: CONTRIBUTING.md
-[potherca]: https://pother.ca/
-[contributors]: https://github.com/dealerdirect/liquid-linter-cli/graphs/contributors
-[vacancies]: http://workingatdealerdirect.eu/?post_type=vacancy&s=&department=99
-[get-in-touch]: http://workingatdealerdirect.eu/open-sollicitatie/
-[workingatdealerdirecteu]: http://www.workingatdealerdirect.eu
-
 [Cassie McKown]: https://thenounproject.com/mckowncr/
-[the Noun Project]: https://thenounproject.com/
-
+[contribution-guidelines]: CONTRIBUTING.md
+[contributors]: https://github.com/dealerdirect/liquid-linter-cli/graphs/contributors
+[get-in-touch]: http://workingatdealerdirect.eu/open-sollicitatie/
+[gnu-find]: https://www.gnu.org/software/findutils/manual/html_mono/find.html#Top
+[gnu-xargs]: https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-xargs
 [includes]: https://help.shopify.com/themes/liquid/tags/theme-tags#include
+[license-shield]: https://img.shields.io/github/license/dealerdirect/liquid-linter-cli.svg
+[liquid-lint repository]: https://github.com/tomheller/liquid-linter/issues
 [liquid-linter]: https://www.npmjs.com/package/liquid-linter
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2017.svg
 [NPM]: https://www.npmjs.com/
 [pipelines]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
+[potherca]: https://pother.ca/
+[project-stage-shield]: https://img.shields.io/badge/Project%20Stage-Development-yellowgreen.svg
+[the Noun Project]: https://thenounproject.com/
+[vacancies]: http://workingatdealerdirect.eu/?post_type=vacancy&s=&department=99
+[version-shield]: https://img.shields.io/npm/v/liquid-linter-cli.svg
+[version]: https://www.npmjs.com/package/liquid-linter-cli
+[versioneye-shield]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790/badge.svg
+[versioneye]: https://www.versioneye.com/user/projects/580be0d1d65a7716b613a790
+[workingatdealerdirecteu]: http://www.workingatdealerdirect.eu
 [Yarn]: https://yarnpkg.com/
-[liquid-lint repository]: https://github.com/tomheller/liquid-linter/issues
