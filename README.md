@@ -81,11 +81,7 @@ show.
 
 **Example**
 
-<pre>
-<span style="color:green;">./path/to/good.lqd</span>: no issues found
-<span style="color:red">./path/to/bad.lqd</span>
-  23:13-23:15  <span style="color:red;">error </span> Tag '{%' was not properly terminated
-</pre>
+![screenshot of example output](./docs/example-output.png)
 
 The output is taken _directly_ from [liquid-linter]. Any weird output or incorrect 
 linting should be reported at the [liquid-lint repository].
