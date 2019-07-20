@@ -175,7 +175,7 @@ process.on('unhandledRejection', function(error/*, promise*/) {
 });
 
 Commander
-    .version('0.4.0')
+    .version('0.5.0')
     .description('Linter for Liquid template files')
     .arguments('<paths...>')
     // @TODO: Figure out how to accept multiple ignore paths
