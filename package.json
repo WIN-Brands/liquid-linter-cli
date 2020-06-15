@@ -18,10 +18,13 @@
     "chalk": "2.4.2",
     "commander": "2.20.0",
     "filehound": "1.17.3",
-    "liquid-linter": "0.0.4"
+    "liquid-linter": "0.0.4",
+    "snyk": "^1.316.1"
   },
   "scripts": {
-    "test": "node tests/test.js"
+    "test": "node tests/test.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,6 @@
   },
   "bugs": {
     "url": "https://github.com/Potherca/liquid-linter-cli/issues"
-  }
+  },
+  "snyk": true
 }
