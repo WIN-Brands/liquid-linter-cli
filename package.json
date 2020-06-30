@@ -1,6 +1,6 @@
 {
   "name": "@unicorns/liquid-linter-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command-line wrapper for the liquid template language linter.",
   "homepage": "https://github.com/UnicornGlobal/liquid-linter-cli",
   "license": "MIT",
@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Potherca/liquid-linter-cli.git"
+    "url": "git+ssh://git@github.com/UnicornGlobal/liquid-linter-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/Potherca/liquid-linter-cli/issues"
+    "url": "https://github.com/UnicornGlobal/liquid-linter-cli/issues"
   },
   "snyk": true
 }
