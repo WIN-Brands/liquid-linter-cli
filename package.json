@@ -1,8 +1,8 @@
 {
-  "name": "liquid-linter-cli",
-  "version": "0.5.0",
+  "name": "@unicorns/liquid-linter-cli",
+  "version": "1.0.0",
   "description": "Command-line wrapper for the liquid template language linter.",
-  "homepage": "https://pother.ca/liquid-linter-cli",
+  "homepage": "https://github.com/UnicornGlobal/liquid-linter-cli",
   "license": "MIT",
   "keywords": [
     "liquid",
@@ -18,7 +18,7 @@
     "chalk": "2.4.2",
     "commander": "2.20.0",
     "filehound": "1.17.3",
-    "liquid-linter": "0.0.4",
+    "@unicorns/liquid-linter": "1.0.0",
     "snyk": "^1.316.1"
   },
   "scripts": {

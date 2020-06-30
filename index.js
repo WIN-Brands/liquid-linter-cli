@@ -6,7 +6,7 @@ const Chalk = require('chalk');
 const Commander = require('commander');
 const FileHound = require('filehound');
 const FileSystem = require('fs');
-const Linter = require('liquid-linter');
+const Linter = require('@unicorns/liquid-linter');
 const Readline = require('readline');
 const Util = require('util');
 
@@ -53,7 +53,6 @@ function action (p_aPaths) {
     });
 
     p_aPaths.forEach(function (p_sPath) {
-
         var aFiles, oFileHound, oStat, sMessage;
 
         if (FileSystem.existsSync(p_sPath) === false) {
@@ -110,7 +109,7 @@ function action (p_aPaths) {
 
                     console.info(sMessage);
                 } else {
-                    Linter.lintFile(p_sFile, function (p_aErrors) {
+                    Linter.lintFilePromise(p_sFile).then(function(p_aErrors) {
                         // @FIXME: Use warnings if not errors
                         // console.error(Chalk.yellow.underline(p_sPath));
                         // console.error(' ' + Chalk.yellow('warning') + sMessage);
