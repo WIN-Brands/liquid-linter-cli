@@ -1,10 +1,8 @@
-tests/fixtures/variable/variable-notclosing.md
-  1:297-1:299  error  Variable '{{' was not properly terminated with regexp: undefined
+tests/fixtures/buttontag/buttontag-as-block.md
+  2:60-2:75  error  Unknown tag 'endbutton'
 tests/fixtures/ifstatement/ifstatement-incomplete.md
   1:1-1:15  error  if tag was never closed
 tests/fixtures/sectionblock/sectiontag-incomplete.md
   1:1-1:14  error  section tag was never closed
-tests/fixtures/buttontag/buttontag-as-block.md
-  2:60-2:75  error  Unknown tag 'endbutton'
-tests/fixtures/sectionblock/sectiontag-incomplete-02.md
-  6:1-6:17  error  Unknown tag 'endsection'
+tests/fixtures/variable/variable-notclosing.md
+  1:297-1:299  error  Variable '{{' was not properly terminated with regexp: undefined

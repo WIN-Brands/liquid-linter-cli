@@ -1,6 +1,8 @@
 Usage: index [options] <paths...>
 
-Linter for Liquid template files
+Linter for Liquid template files (Unicorn Edition)
+
+**This version is for the Shopify extended version of liquid**
 
 Options:
   -V, --version                      output the version number

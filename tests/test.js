@@ -8,8 +8,8 @@ function test () {
     var oCommands = {
         'help': ['--help'],
         'version': ['--version'],
-        // 'without-custom-tags':['tests/fixtures'],
-        // 'with-custom-tags': ['--custom-block','section','--custom-tag','button', 'tests/fixtures']
+        'without-custom-tags':['tests/fixtures'],
+        'with-custom-tags': ['--custom-block','section','--custom-tag','button', 'tests/fixtures']
     };
 
     for (var sFile in oCommands) {
@@ -32,7 +32,9 @@ function test () {
         };
 
         ['stdout', 'stderr'].forEach(function(sSubject){
-            if (oContent[sSubject].trim() === oOutput[sSubject].trim()) {
+          var expected = oContent[sSubject].split('\n').sort().filter(function (el) { return el != ''; });
+          var received = oOutput[sSubject].split('\n').sort().filter(function (el) { return el != ''; });
+            if (expected.join('') === received.join('')) {
                 console.info(Chalk.green('✔') + ' Test ' + sFile + ': passed(for ' + sSubject + ')');
             } else {
                 process.exitCode = 3;

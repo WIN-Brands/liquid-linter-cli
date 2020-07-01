@@ -1,24 +1,9 @@
-tests/fixtures/sectionblock/sectiontag-incomplete.md
-  1:1-1:14  error  Unknown tag 'section'
-tests/fixtures/buttontag/buttontag-as-tag.md
-  2:20-2:50  error  Unknown tag 'button'
-tests/fixtures/variable/variable-notclosing.md
-  1:297-1:299  error  Variable '{{' was not properly terminated with regexp: undefined
-tests/fixtures/ifstatement/ifstatement-incomplete.md
-  1:1-1:15  error  if tag was never closed
-tests/fixtures/sectionblock/sectiontag-complete.md
-  1:1-1:14  error  Unknown tag 'section'
-  3:1-3:17  error  Unknown tag 'endsection'
-tests/fixtures/sectionblock/sectiontag-parameter-bgimage-passing.md
-  1:1-1:31  error  Unknown tag 'section'
-  3:1-3:17  error  Unknown tag 'endsection'
-tests/fixtures/sectionblock/sectiontag-parameter-bgimage.md
-  1:1-1:31  error  Unknown tag 'section'
-  3:1-3:17  error  Unknown tag 'endsection'
 tests/fixtures/buttontag/buttontag-as-block.md
   2:20-2:50  error  Unknown tag 'button'
-  2:32-2:47  error  Unknown tag 'endbutton'
-tests/fixtures/sectionblock/sectiontag-incomplete-02.md
-  1:1-1:14  error  Unknown tag 'section'
-  3:1-3:17  error  Unknown tag 'endsection'
-  6:1-6:17  error  Unknown tag 'endsection'
+tests/fixtures/buttontag/buttontag-as-tag.md
+  2:20-2:50  error  Unknown tag 'button'
+tests/fixtures/ifstatement/ifstatement-incomplete.md
+  1:1-1:15  error  if tag was never closed
+tests/fixtures/variable/variable-notclosing.md
+  1:297-1:299  error  Variable '{{' was not properly terminated with regexp: undefined
+

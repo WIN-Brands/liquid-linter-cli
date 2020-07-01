@@ -125,7 +125,7 @@ function action (p_aPaths) {
                                     p_oError.location.line,
                                     p_oError.location.col,
                                     p_oError.location.line,
-                                    p_oError.location.col + p_oError.location.lenght,
+                                    p_oError.location.col + p_oError.location.length,
                                     Chalk.red('error'),
                                     p_oError.message.split('\n')[0]
                                 );
@@ -174,8 +174,8 @@ process.on('unhandledRejection', function(error/*, promise*/) {
 });
 
 Commander
-    .version('0.5.0')
-    .description('Linter for Liquid template files')
+    .version('1.0.2')
+    .description('Linter for Liquid template files (Unicorn Edition)\n\n**This version is for the Shopify extended version of liquid**')
     .arguments('<paths...>')
     // @TODO: Figure out how to accept multiple ignore paths
     // .option('-x, --exclude <ignore-path...>', 'Paths to ignore')
