@@ -1,6 +1,6 @@
 {
   "name": "@unicorns/liquid-linter-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command-line wrapper for the liquid template language linter.",
   "homepage": "https://github.com/UnicornGlobal/liquid-linter-cli",
   "license": "MIT",
