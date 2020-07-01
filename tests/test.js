@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 'use strict';
 
 const Chalk = require('chalk');
@@ -10,15 +8,15 @@ function test () {
     var oCommands = {
         'help': ['--help'],
         'version': ['--version'],
-        'without-custom-tags':['tests/fixtures'],
-        'with-custom-tags': ['--custom-block','section','--custom-tag','button', 'tests/fixtures']
+        // 'without-custom-tags':['tests/fixtures'],
+        // 'with-custom-tags': ['--custom-block','section','--custom-tag','button', 'tests/fixtures']
     };
 
     for (var sFile in oCommands) {
         var aArguments, oOutput = {}, oContent, sCommand;
 
         aArguments = oCommands[sFile];
-        sCommand = 'nodejs index.js ' + aArguments.join(' ');
+        sCommand = 'node index.js ' + aArguments.join(' ');
 
         try {
             oOutput.stderr = '';
