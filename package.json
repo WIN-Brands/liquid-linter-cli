@@ -1,5 +1,5 @@
 {
-  "name": "@unicorns/liquid-linter-cli",
+  "name": "@WIN-Brands/liquid-linter-cli",
   "version": "1.0.3",
   "description": "Command-line wrapper for the liquid template language linter.",
   "homepage": "https://github.com/WIN-Brands/liquid-linter-cli/",
