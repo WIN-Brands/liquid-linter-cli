@@ -2,7 +2,7 @@
   "name": "@unicorns/liquid-linter-cli",
   "version": "1.0.3",
   "description": "Command-line wrapper for the liquid template language linter.",
-  "homepage": "https://github.com/UnicornGlobal/liquid-linter-cli",
+  "homepage": "https://github.com/WIN-Brands/liquid-linter-cli/",
   "license": "MIT",
   "keywords": [
     "liquid",
@@ -18,7 +18,7 @@
     "chalk": "2.4.2",
     "commander": "2.20.0",
     "filehound": "1.17.3",
-    "@unicorns/liquid-linter": "1.0.2",
+    "@WIN-Brands/liquid-linter": "https://github.com/WIN-Brands/liquid-linter",
     "snyk": "^1.316.1"
   },
   "scripts": {
@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/UnicornGlobal/liquid-linter-cli.git"
+    "url": "git+ssh://git@WIN-Brands/liquid-linter-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/UnicornGlobal/liquid-linter-cli/issues"
+    "url": "https://WIN-Brands/liquid-linter-cli/issues"
   },
   "snyk": true
 }
