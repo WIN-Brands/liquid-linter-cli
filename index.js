@@ -6,7 +6,7 @@ const Chalk = require('chalk');
 const Commander = require('commander');
 const FileHound = require('filehound');
 const FileSystem = require('fs');
-const Linter = require('@unicorns/liquid-linter');
+const Linter = require('@WIN-Brands/liquid-linter');
 const Readline = require('readline');
 const Util = require('util');
 
