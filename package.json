@@ -18,7 +18,7 @@
     "chalk": "2.4.2",
     "commander": "2.20.0",
     "filehound": "1.17.3",
-    "@WIN-Brands/liquid-linter": ">4.0",
+    "@WIN-Brands/liquid-linter": "https://github.com/WIN-Brands/liquid-linter",
     "snyk": "^1.316.1"
   },
   "scripts": {
